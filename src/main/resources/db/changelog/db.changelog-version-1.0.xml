@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="1.0" author="utpal.kumar">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="stock"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="stock">
+            <column name="stock_id" type="VARCHAR(60)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="stock_name" type="VARCHAR(256)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_update" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="current_price" type="float">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>
